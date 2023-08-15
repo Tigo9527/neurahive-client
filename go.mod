@@ -1,4 +1,4 @@
-module github.com/Conflux-Chain/neurahive-client
+module github.com/Tigo9527/neurahive-client
 
 go 1.21
 
