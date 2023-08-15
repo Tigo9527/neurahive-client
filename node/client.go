@@ -80,32 +80,32 @@ type NeurahiveClient struct {
 }
 
 func (c *NeurahiveClient) GetStatus() (status Status, err error) {
-	err = c.provider.CallContext(context.Background(), &status, "nrhv_getStatus")
+	err = c.provider.CallContext(context.Background(), &status, "ionian_getStatus")
 	return
 }
 
 func (c *NeurahiveClient) GetFileInfo(root common.Hash) (file *FileInfo, err error) {
-	err = c.provider.CallContext(context.Background(), &file, "nrhv_getFileInfo", root)
+	err = c.provider.CallContext(context.Background(), &file, "ionian_getFileInfo", root)
 	return
 }
 
 func (c *NeurahiveClient) GetFileInfoByTxSeq(txSeq uint64) (file *FileInfo, err error) {
-	err = c.provider.CallContext(context.Background(), &file, "nrhv_getFileInfoByTxSeq", txSeq)
+	err = c.provider.CallContext(context.Background(), &file, "ionian_getFileInfoByTxSeq", txSeq)
 	return
 }
 
 func (c *NeurahiveClient) UploadSegment(segment SegmentWithProof) (ret int, err error) {
-	err = c.provider.CallContext(context.Background(), &ret, "nrhv_uploadSegment", segment)
+	err = c.provider.CallContext(context.Background(), &ret, "ionian_uploadSegment", segment)
 	return
 }
 
 func (c *NeurahiveClient) DownloadSegment(root common.Hash, startIndex, endIndex uint64) (data []byte, err error) {
-	err = c.provider.CallContext(context.Background(), &data, "nrhv_downloadSegment", root, startIndex, endIndex)
+	err = c.provider.CallContext(context.Background(), &data, "ionian_downloadSegment", root, startIndex, endIndex)
 	return
 }
 
 func (c *NeurahiveClient) DownloadSegmentWithProof(root common.Hash, index uint64) (segment *SegmentWithProof, err error) {
-	err = c.provider.CallContext(context.Background(), &segment, "nrhv_downloadSegmentWithProof", root, index)
+	err = c.provider.CallContext(context.Background(), &segment, "ionian_downloadSegmentWithProof", root, index)
 	return
 }
 
