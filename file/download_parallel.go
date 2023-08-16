@@ -126,8 +126,8 @@ func (downloader *SegmentDownloader) downloadWithProof(client *node.Client, root
 
 	// pad empty chunks for the last segment to validate merkle proof
 	var emptyChunksPadded uint64
-	if numChunks := endIndex - startIndex; numChunks < DefaultSegmentMaxChunks || numChunksFlowPadded%DefaultSegmentMaxChunks == 0 {
-		if segmentIndex < numSegmentsFlowPadded-1 {
+	if numChunks := endIndex - startIndex; numChunks < DefaultSegmentMaxChunks {
+		if segmentIndex < numSegmentsFlowPadded-1 || numChunksFlowPadded%DefaultSegmentMaxChunks == 0 {
 			// pad empty chunks to a full segment
 			emptyChunksPadded = DefaultSegmentMaxChunks - numChunks
 		} else if lastSegmentChunks := numChunksFlowPadded % DefaultSegmentMaxChunks; numChunks < lastSegmentChunks {
