@@ -1,6 +1,7 @@
 package file
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/Conflux-Chain/neurahive-client/file/download"
@@ -60,11 +61,11 @@ func (downloader *Downloader) queryFile(root common.Hash) (info *node.FileInfo, 
 		}
 
 		if info == nil {
-			return nil, errors.WithMessagef(err, "File not found on node %v", v.URL())
+			return nil, fmt.Errorf("file not found on node %v", v.URL())
 		}
 
 		if !info.Finalized {
-			return nil, errors.WithMessagef(err, "File not finalized on node %v", v.URL())
+			return nil, fmt.Errorf("file not finalized on node %v", v.URL())
 		}
 	}
 
